@@ -25,7 +25,7 @@ void    push_a(t_stack_node **a, t_stack_node **b)
         (*b)->next = *a;
     *a = *b;
     *b = temp;
-    write(1, "pb\n", 3);
+    write(1, "pa\n", 3);
 }
 
 void    push_b(t_stack_node **a, t_stack_node **b)

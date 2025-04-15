@@ -12,6 +12,20 @@
 
 #include "push_swap.h"
 
+
+void    free_stack(t_stack_node **a)
+{
+    t_stack_node    *temp;
+    if (!a || !*a)
+        return ;
+    while(*a)
+    {
+        temp = (*a)->next;
+        free(*a);
+        *a = temp;
+    }
+}
+
 void    print_stack(t_stack_node **a)
 {
     t_stack_node    *current;
@@ -23,6 +37,19 @@ void    print_stack(t_stack_node **a)
     }
     if (current == NULL)
         printf("a->value = : NULL\n");
+}
+
+void    print_stack_memory(t_stack_node **a)
+{
+    t_stack_node    *current;
+    current = *a;
+    while(current != NULL)
+    {
+        printf("a->next = : %p\n", current->next);
+        current = current->next;
+    }
+    if (current == NULL)
+        printf("a->next = : NULL\n");
 }
 
 void    print_both(t_stack_node **a, t_stack_node **b)
@@ -54,10 +81,10 @@ t_stack_node    *get_last_node(t_stack_node **a)
     t_stack_node    *current;
 
     current = *a;
-    if (*a == NULL || (*a)->prev == NULL)
+    if (*a == NULL || (*a)->next == NULL)
         return (NULL);
-    while (current->prev)
-        current = current->prev;
+    while (current->next)
+        current = current->next;
     return (current);
 }
 
@@ -65,11 +92,11 @@ t_stack_node    *get_second_last_node(t_stack_node **a)
 {
     t_stack_node    *current;
 
-    if (*a == NULL || (*a)->prev == NULL)
+    if (*a == NULL || (*a)->next == NULL)
         return (NULL);
     current = *a;
-    while (current->prev && current->prev->prev)
-        current = current->prev;
+    while (current->next && current->next->next)
+        current = current->next;
     return (current);
 }
 
@@ -82,9 +109,9 @@ int     stack_len(t_stack_node **a)
         return (0);
     current = *a;
     stack_len = 1;
-    while (current->prev)
+    while (current->next)
     {
-        current = current->prev;
+        current = current->next;
         stack_len++;
     }
     return (stack_len);

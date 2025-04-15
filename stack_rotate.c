@@ -14,29 +14,30 @@
 
 void    rotate_a(t_stack_node **a)
 {
-    t_stack_node    *b;
-    t_stack_node    *second_last_node;
+    t_stack_node   *temp;
+    t_stack_node   *last;
     if (!a || !*a || !(*a)->next)
         return ;
-    b = get_last_node(a);
-    second_last_node = get_second_last_node(a);
-    b->next = *a;
-    second_last_node->next = NULL;
-    *a = b;
+    last = get_last_node(a);
+    temp = (*a)->next;
+    (*a)->next = NULL;
+    last->next = *a;
+    *a = temp;
     write(1, "ra\n", 3);
 }
 
 void    rotate_b(t_stack_node **b)
 {
-    t_stack_node    *a;
-    t_stack_node    *second_last_node;
+    t_stack_node   *temp;
+    t_stack_node   *last;
     if (!b || !*b || !(*b)->next)
         return ;
-    a = get_last_node(b);
-    second_last_node = get_second_last_node(b);
-    a->next = *b;
-    second_last_node->next = NULL;
-    *b = a;
+    last = get_last_node(b);
+    
+    temp = (*b)->next;
+    (*b)->next = NULL;
+    last->next = *b;
+    *b = temp;
     write(1, "rb\n", 3);
 }
 

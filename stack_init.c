@@ -6,23 +6,11 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/15 17:04:13 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/15 18:20:12 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    push_front_stack(t_stack_node **a, int value)
-{
-    t_stack_node    *new_node;
-
-    new_node = malloc(sizeof(t_stack_node));
-    if(!new_node)
-        return ;
-    new_node->value = value;
-    new_node->prev = *a;
-    *a = new_node;
-}
 
 void    push_back_stack(t_stack_node **a, int value)
 {
@@ -46,23 +34,22 @@ void    push_back_stack(t_stack_node **a, int value)
     current->prev = current;
 }
 
-void    stack_init(t_stack_node **a, char **argv)
+int stack_init(t_stack_node **a, char **argv)
 {
     int i;
-    int value;
+	t_atoi_check check;
 
     i = 0;
-    // if (!check_only_num(argv))
-    //     return ;
     while (argv[i])
     {
-        value = ft_atoi(argv[i]);
-        // if (value > 2147483647 || value < -2147483648)
-        // {
-        //     free_stack(a);
-        //     return ;
-        // }
-        push_back_stack(a, value);
+        check = atol_overflow(argv[i]);
+        if (check.overflow == 1)
+        {
+            printf("atoi overflow free_stack");
+            free_stack(a);
+            return (0);
+        }
+        push_back_stack(a, check.nb);
         i++;
     }
     // if (is_duplicate_num_in_stack(a))
@@ -70,4 +57,5 @@ void    stack_init(t_stack_node **a, char **argv)
     //     free_stack(a);
     //     return ;
     // }
+    return (1);
 }
