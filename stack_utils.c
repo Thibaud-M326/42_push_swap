@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 22:51:19 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/15 16:59:04 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/15 17:20:19 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void    print_both(t_stack_node **a, t_stack_node **b)
     while(current_a != NULL)
     {
         printf("a->value %d\n", current_a->value);
-        current_a = current_a->next;
+        current_a = current_a->prev;
     }
     if (current_a == NULL)
         printf("a->value NULL\n\n");
     while(current_b != NULL)
     {
         printf("b->value %d\n", current_b->value);
-        current_b = current_b->next;
+        current_b = current_b->prev;
     }
     if (current_b == NULL)
         printf("b->value NULL\n");

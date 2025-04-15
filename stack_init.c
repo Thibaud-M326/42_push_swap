@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/15 17:04:13 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/15 17:19:10 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void    stack_init(t_stack_node **a, char **argv)
         //     free_stack(a);
         //     return ;
         // }
-        push_back_stack(a, value);
+        push_front_stack(a, value);
         i++;
     }
     // if (is_duplicate_num_in_stack(a))

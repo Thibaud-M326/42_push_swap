@@ -6,7 +6,7 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:06:31 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/15 17:05:02 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/15 17:19:00 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void    push_a(t_stack_node **a, t_stack_node **b)
 
     if (b == NULL || a == NULL|| *b == NULL)
         return ;
-    temp = (*b)->next;
+    temp = (*b)->prev;
     if (*a == NULL)
-        (*b)->next = NULL;
+        (*b)->prev = NULL;
     else
-        (*b)->next = *a;
+        (*b)->prev = *a;
     *a = *b;
     *b = temp;
     write(1, "pb\n", 3);
@@ -34,11 +34,11 @@ void    push_b(t_stack_node **a, t_stack_node **b)
 
     if (a == NULL || b == NULL|| *a == NULL)
         return ;
-    temp = (*a)->next;
+    temp = (*a)->prev;
     if (*b == NULL)
-        (*a)->next = NULL;
+        (*a)->prev = NULL;
     else
-        (*a)->next = *b;
+        (*a)->prev = *b;
     *b = *a;
     *a = temp;
     write(1, "pb\n", 3);
