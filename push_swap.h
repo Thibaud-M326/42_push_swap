@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:58:15 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/15 17:51:43 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/16 20:09:28 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ t_atoi_check    atol_overflow(const char *nptr);
 // stack_init.c
 int             push_back_stack(t_stack_node **a, int value);
 int             stack_init(t_stack_node **a, char **argv);
+
+// stack_sorted.c
+int             stack_sorted(t_stack_node **a);
 
 // stack_swap.c
 void            swap_a(t_stack_node **a);
