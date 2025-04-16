@@ -30,7 +30,6 @@ static int	get_atoi_sign(int *i, const char *nptr)
 	return (sign);
 }
 
-//dois gerer les - et + convenablement
 t_atoi_check	atol_overflow(const char *nptr)
 {
 	t_atoi_check check;
@@ -38,17 +37,16 @@ t_atoi_check	atol_overflow(const char *nptr)
 	int		sign;
 	int		i;
 
-	check.nb = 0;
-	check.overflow = 0;
+	check.error = 0;
 	long_nb = 0;
 	i = 0;
 	sign = get_atoi_sign(&i, nptr);
-	while (nptr[i] >= '0' && nptr[i] <= '9' && check.overflow == 0)
+	while (nptr[i] >= '0' && nptr[i] <= '9' && check.error == 0)
 	{
 		long_nb = long_nb * 10 + (nptr[i] - 48);
         if (long_nb > 2147483647 || long_nb < -2147483648)
 		{
-			check.overflow = 1;
+			check.error = 1;
 			return (check);
 		}
 		i++;

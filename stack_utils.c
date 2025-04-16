@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-
 void    free_stack(t_stack_node **a)
 {
     t_stack_node    *temp;
@@ -33,7 +32,7 @@ void    print_stack(t_stack_node **a)
     while(current != NULL)
     {
         printf("a->value = : %d\n", current->value);
-        current = current->prev;
+        current = current->next;
     }
     if (current == NULL)
         printf("a->value = : NULL\n");

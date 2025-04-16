@@ -25,6 +25,7 @@ int     main(int argc, char **argv)
 	if(!stack_init(&a, &argv[1]))
 		return (1);
 
+	print_both(&a, &b);
 
 	free_stack(&a);
 	return (0);

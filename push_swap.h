@@ -20,8 +20,8 @@
 
 typedef struct s_atoi_check
 {
-	int    nb;
-	int     overflow;
+	int         nb;
+	int         error;
 }				t_atoi_check;
 
 typedef struct  s_stack_node
@@ -31,11 +31,11 @@ typedef struct  s_stack_node
     struct s_stack_node *next;
 }               t_stack_node;
 
-// atoi.c
+// atol_overflow.c
 t_atoi_check    atol_overflow(const char *nptr);
 
 // stack_init.c
-void            push_back_stack(t_stack_node **a, int value);
+int             push_back_stack(t_stack_node **a, int value);
 int             stack_init(t_stack_node **a, char **argv);
 
 // stack_swap.c
