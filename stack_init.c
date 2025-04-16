@@ -87,7 +87,5 @@ int stack_init(t_stack_node **a, char **argv)
         }
         i++;
     }
-	// print_stack(a);
-	// check.error = is_duplicate_num_in_stack(a);
     return (1);
 }

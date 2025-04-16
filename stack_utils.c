@@ -23,6 +23,7 @@ void    free_stack(t_stack_node **a)
         free(*a);
         *a = temp;
     }
+    printf("stack freed\n");
 }
 
 void    print_stack(t_stack_node **a)

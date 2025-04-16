@@ -20,6 +20,7 @@
 
 typedef struct s_atoi_check
 {
+	int         sign;
 	int         nb;
 	int         error;
 }				t_atoi_check;
