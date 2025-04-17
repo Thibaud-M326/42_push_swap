@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 18:20:13 by vscode            #+#    #+#             */
-/*   Updated: 2025/04/17 21:31:29 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/17 22:10:44 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,32 +93,21 @@ void    symplify(t_stack_node **a, int *stack_values, int stack_len)
 
 static void symplify_stack_value(t_stack_node **a, int *stack_values)
 {
-    //create a copy tab of stack values
     int stack_len;
 
     get_stack_values(a, &stack_values, &stack_len);
-    printf("stack_value tab : \n");
-    print_tab(stack_values, stack_len);
-    //sort stack_values
     sort_int_tab(stack_values, stack_len);
-    printf("stack_value tab sorted: \n");
-    print_tab(stack_values, stack_len);
-    //use sorted_values to simplify stack values
     symplify(a, stack_values, stack_len);
 }
 
-static int     get_top(t_stack_node **a)
+static int     get_stack_top_value(t_stack_node **a)
 {
     int num;
 
-    if (!a || !*a)
-        return (0);
     num = (*a)->value;
-
     return (num);
 }
 
-//return 1 si stack vide 
 int     is_stack_empty(t_stack_node **b)
 {
     if (!*b)
@@ -128,16 +117,33 @@ int     is_stack_empty(t_stack_node **b)
 
 void    radix(t_stack_node **a, t_stack_node **b)
 {
-    int stack_len;
     int max_value;
     int max_bits;
+    int num;
     int i;
+    int j;
 
-
-    stack_len = get_stack_len(a);
-    max_value = stack_len - 1;
+    max_value = get_stack_len(a) - 1;
+    max_bits = 0;
     while ((max_value >> max_bits) != 0)
         max_bits++;
+    i = 0;
+    while (i < max_bits)
+    {
+        j = 0;
+        while (j < get_stack_len(a))
+        {
+            num = get_stack_top_value(a);
+            if ((num >> i) & 1 == 1)
+                rotate_a(a);
+            else
+                push_b(a, b);
+            j++;
+        }
+        while (!is_stack_empty(b))
+            push_a(a, b);
+        i++;
+    }
 }
 
 void    push_swap(t_stack_node **a, t_stack_node **b)
@@ -147,13 +153,8 @@ void    push_swap(t_stack_node **a, t_stack_node **b)
     if(!a || !*a || !b)
         return ;
     stack_values = NULL;
-    //first simplify stack value
     symplify_stack_value(a, stack_values);
-
-    //then use it to sort with radix
-    // radix(a, b);
-
-    //free stack_value
+    radix(a, b);
     if(stack_values)
         free(stack_values);
 }
