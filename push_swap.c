@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 18:20:13 by vscode            #+#    #+#             */
-/*   Updated: 2025/04/17 22:10:44 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/17 23:26:39 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void    symplify(t_stack_node **a, int *stack_values, int stack_len)
     }
 }
 
-static void symplify_stack_value(t_stack_node **a, int *stack_values)
+static void symplify_stack(t_stack_node **a, int *stack_values)
 {
     int stack_len;
 
@@ -117,28 +117,28 @@ int     is_stack_empty(t_stack_node **b)
 
 void    radix(t_stack_node **a, t_stack_node **b)
 {
+    int stack_len;
     int max_value;
     int max_bits;
     int num;
     int i;
-    int j;
 
-    max_value = get_stack_len(a) - 1;
+    stack_len = get_stack_len(a);
+    max_value = stack_len - 1;
     max_bits = 0;
     while ((max_value >> max_bits) != 0)
         max_bits++;
     i = 0;
     while (i < max_bits)
     {
-        j = 0;
-        while (j < get_stack_len(a))
+        stack_len = get_stack_len(a);
+        while (stack_len--)
         {
             num = get_stack_top_value(a);
-            if ((num >> i) & 1 == 1)
+            if (((num >> i) & 1) == 1)
                 rotate_a(a);
             else
                 push_b(a, b);
-            j++;
         }
         while (!is_stack_empty(b))
             push_a(a, b);
@@ -153,7 +153,9 @@ void    push_swap(t_stack_node **a, t_stack_node **b)
     if(!a || !*a || !b)
         return ;
     stack_values = NULL;
-    symplify_stack_value(a, stack_values);
+    symplify_stack(a, stack_values);
+    printf("before radix stack a\n");
+    print_stack(a);
     radix(a, b);
     if(stack_values)
         free(stack_values);

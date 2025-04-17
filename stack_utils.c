@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 22:51:19 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/17 09:05:13 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/17 22:55:36 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void    print_stack(t_stack_node **a)
     current = *a;
     while(current != NULL)
     {
-        printf("a->value = : %d\n", current->value);
+        printf("a->value = %d\n", current->value);
         current = current->next;
     }
     if (current == NULL)

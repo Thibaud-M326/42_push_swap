@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:03:09 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/17 22:00:25 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/17 22:47:50 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ int     main(int argc, char **argv)
 		return (1);
 	stack_len = get_stack_len(&a);
 
-	printf("stack_len %d\n\n", stack_len);
-
-	print_both(&a, &b);
-
 	// while (!stack_sorted(&a))
 	// {
 	// 	if (stack_len == 2)
@@ -40,7 +36,7 @@ int     main(int argc, char **argv)
 			push_swap(&a, &b);
 	// }
 
-	printf("end radix \n");
+	printf("\nend radix\n");
 	print_both(&a, &b);
 
 	free_stack(&a);
