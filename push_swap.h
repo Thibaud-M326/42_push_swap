@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:58:15 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/16 20:09:28 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/17 19:01:20 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct  s_stack_node
     struct s_stack_node *next;
 }               t_stack_node;
 
+// push_swap.c
+void            push_swap(t_stack_node **a, t_stack_node **b);
+
 // atol_overflow.c
 t_atoi_check    atol_overflow(const char *nptr);
 
@@ -39,8 +42,9 @@ t_atoi_check    atol_overflow(const char *nptr);
 int             push_back_stack(t_stack_node **a, int value);
 int             stack_init(t_stack_node **a, char **argv);
 
-// stack_sorted.c
+// stack_sort.c
 int             stack_sorted(t_stack_node **a);
+void            stack_sort_three(t_stack_node **a);
 
 // stack_swap.c
 void            swap_a(t_stack_node **a);
@@ -68,6 +72,6 @@ void            print_stack_memory(t_stack_node **a);
 void            print_both(t_stack_node **a, t_stack_node **b);
 t_stack_node    *get_last_node(t_stack_node **a);
 t_stack_node    *get_second_last_node(t_stack_node **a);
-int             stack_len(t_stack_node **a);
+int             get_stack_len(t_stack_node **a);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 22:51:19 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/15 16:59:04 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/17 09:05:13 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ t_stack_node    *get_second_last_node(t_stack_node **a)
     return (current);
 }
 
-int     stack_len(t_stack_node **a)
+int     get_stack_len(t_stack_node **a)
 {
     t_stack_node    *current;
     int stack_len;
