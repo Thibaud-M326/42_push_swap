@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:58:15 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/17 19:01:20 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/18 09:22:42 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_atoi_check
 typedef struct  s_stack_node
 {
     int                 value;
+    int                 simplified;
     struct s_stack_node *prev;
     struct s_stack_node *next;
 }               t_stack_node;
