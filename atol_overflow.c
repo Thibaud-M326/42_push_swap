@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   atol_overflow.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:01:24 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/15 18:25:24 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/18 18:21:45 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,11 @@ t_atoi_check	atol_overflow(const char *nptr)
 	long	long_nb;
 	int		i;
 	
-	if (!nptr || nptr[0] == '\0')
+	if ((!nptr || nptr[0] == '\0') 
+		|| ((nptr[0] == '-' || nptr[0] == '+')
+			&& !(nptr[1] >= '0' && nptr[1] <= '9')))
 	{
-		printf("empty string\n");
+		printf("empty string or sign alone\n");
 		check.error = 1;
 		return (check);
 	}
@@ -98,25 +100,25 @@ t_atoi_check	atol_overflow(const char *nptr)
 	check.error = has_invalid_char(nptr);
 	if (check.error)
 	{
-		printf("invalid char\n", check.error);
+		printf("invalid char\n");
 		return (check);
 	}
 	check = get_atoi_sign(&i, nptr, check);
 	if (check.error)
 	{
-		printf("invalid atol\n", check.error);
+		printf("invalid atol\n");
 		return (check);
 	}
 	check = get_long_value(&i, &long_nb, nptr, check);
 	if (check.error)
 	{
-		printf("input value overflowed int\n", check.error);
+		printf("input value overflowed int\n");
 		return (check);
 	}
 	check = no_sign_after_number(&i, nptr, check);
 	if (check.error)
 	{
-		printf("there is a sign after number\n", check.error);
+		printf("there is a sign after number\n");
 		return (check);
 	}
 	check.nb = (int)long_nb;

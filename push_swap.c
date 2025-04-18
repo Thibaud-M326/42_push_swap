@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 18:20:13 by vscode            #+#    #+#             */
-/*   Updated: 2025/04/17 23:26:39 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/18 18:48:31 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ void    symplify(t_stack_node **a, int *stack_values, int stack_len)
     }
 }
 
-static void symplify_stack(t_stack_node **a, int *stack_values)
+static void symplify_stack(t_stack_node **a, int **stack_values)
 {
     int stack_len;
 
-    get_stack_values(a, &stack_values, &stack_len);
-    sort_int_tab(stack_values, stack_len);
-    symplify(a, stack_values, stack_len);
+    get_stack_values(a, stack_values, &stack_len);
+    sort_int_tab(*stack_values, stack_len);
+    symplify(a, *stack_values, stack_len);
 }
 
 static int     get_stack_top_value(t_stack_node **a)
@@ -153,7 +153,7 @@ void    push_swap(t_stack_node **a, t_stack_node **b)
     if(!a || !*a || !b)
         return ;
     stack_values = NULL;
-    symplify_stack(a, stack_values);
+    symplify_stack(a, &stack_values);
     printf("before radix stack a\n");
     print_stack(a);
     radix(a, b);
