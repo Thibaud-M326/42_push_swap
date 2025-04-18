@@ -1,39 +1,64 @@
-################# MAKEFILE PUSH_SWAP #################
+# Variables
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I./header -I./libft/42_libft -I./libft/42_ft_printf
+LIBFT = ./libft/42_libft/libft.a
+LIBFTPRINTF = ./libft/42_ft_printf/libftprintf.a
+OBJ_DIR = ./obj
+SRC_DIR = ./source
+HEADER_DIR = ./header
+BIN_DIR = ./bin
 
-NAME    := push_swap
-CC      := cc
-CFLAGS  := -Wall -Wextra -Werror -Iheader
-RM      := rm -f
-RMRF    := rm -rf
+# Directories
+SRC = $(wildcard $(SRC_DIR)/*.c)
+OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-SRCS    := source/main.c \
-           source/push_swap.c \
-           source/stack_init.c \
-           source/stack_push.c \
-           source/stack_reverse_rotate.c \
-           source/stack_rotate.c \
-           source/stack_sort.c \
-           source/stack_swap.c \
-           source/stack_utils.c \
-           source/atol_overflow.c
+# Targets
+NAME = push_swap
+CHECKER = checker_Mac
 
-HDRS    := header/push_swap.h
-OBJS    := $(SRCS:.c=.o)
-
+# Default Target
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) libft/libft.a libft/libftprintf.a
+# Create Object Folder
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-%.o: source/%.c $(HDRS)
+# Create Binary Folder
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
+
+# Compiler and Linker Rules
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(NAME): $(OBJ) $(LIBFT) $(LIBFTPRINTF) | $(BIN_DIR)
+	$(CC) $(OBJ) $(LIBFT) $(LIBFTPRINTF) -o $(BIN_DIR)/$(NAME)
+
+# Make checker executable
+$(CHECKER): $(OBJ) $(LIBFT) $(LIBFTPRINTF) | $(BIN_DIR)
+	$(CC) $(OBJ) $(LIBFT) $(LIBFTPRINTF) -o $(BIN_DIR)/$(CHECKER)
+
+# Build libft and libftprintf
+$(LIBFT):
+	$(MAKE) -C ./libft/42_libft
+
+$(LIBFTPRINTF):
+	$(MAKE) -C ./libft/42_ft_printf
+
+# Clean Objects and Binaries
 clean:
-	$(RMRF) source/*.o
+	rm -rf $(OBJ_DIR)
+	rm -rf $(BIN_DIR)/$(NAME)
+	rm -rf $(BIN_DIR)/$(CHECKER)
+	$(MAKE) clean -C ./libft/42_libft
+	$(MAKE) clean -C ./libft/42_ft_printf
 
+# Remove compiled files
 fclean: clean
-	$(RM) $(NAME)
+	rm -rf $(LIBFT)
+	rm -rf $(LIBFTPRINTF)
 
+# Rebuild Everything
 re: fclean all
 
 .PHONY: all clean fclean re

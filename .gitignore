@@ -1,5 +1,5 @@
 # Fichiers objets
-source/*.o
+obj/*.o
 
 # Exécutables
 push_swap
