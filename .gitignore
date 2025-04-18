@@ -1,0 +1,16 @@
+# Fichiers objets
+source/*.o
+
+# Exécutables
+push_swap
+checker_Mac
+
+# Fichiers temporaires ou de backup
+*~
+*.swp
+*.tmp
+*.bak
+
+# Fichiers générés par l’éditeur (VS Code, etc.)
+.vscode/
+.DS_Store

@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 22:51:19 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/17 22:55:36 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/18 21:58:03 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void    free_stack(t_stack_node **a)
         free(*a);
         *a = temp;
     }
-    printf("stack freed\n");
+    DEBUG_PRINT(("stack freed"));
 }
 
 void    print_stack(t_stack_node **a)
@@ -37,19 +37,6 @@ void    print_stack(t_stack_node **a)
     }
     if (current == NULL)
         printf("a->value = : NULL\n");
-}
-
-void    print_stack_memory(t_stack_node **a)
-{
-    t_stack_node    *current;
-    current = *a;
-    while(current != NULL)
-    {
-        printf("a->next = : %p\n", current->next);
-        current = current->next;
-    }
-    if (current == NULL)
-        printf("a->next = : NULL\n");
 }
 
 void    print_both(t_stack_node **a, t_stack_node **b)
@@ -73,7 +60,7 @@ void    print_both(t_stack_node **a, t_stack_node **b)
     }
     if (current_b == NULL)
         printf("b->value NULL\n");
-        printf("-------------\n");
+    printf("-------------\n");
 }
 
 t_stack_node    *get_last_node(t_stack_node **a)

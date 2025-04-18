@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/15 18:20:12 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/18 20:38:41 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,16 @@ int	is_duplicate_num_in_stack(t_stack_node **a)
 		{
 			if (i->value == j->value)
 			{
-				printf("duplicate\n");
+				DEBUG_PRINT(("duplicate"));
+				printf("Error\n");
 				return (1);
 			}
 			j = j->next;
 		}
 		if (i->value == j->value)
 		{
-			printf("duplicate\n");
+			DEBUG_PRINT(("duplicate"));
+			printf("Error\n");
 			return (1);
 		}
 		i = i->next;

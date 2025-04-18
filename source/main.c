@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:03:09 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/18 16:59:35 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/18 20:46:10 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int     main(int argc, char **argv)
 	t_stack_node	*a;
 	t_stack_node	*b;
 	int				stack_len;	
-
+	
 	a = NULL;
 	b = NULL;
 	if (1 == argc || (2 == argc) || !argv[1][0])
@@ -25,7 +25,6 @@ int     main(int argc, char **argv)
 	if(!stack_init(&a, &argv[1]))
 		return (1);
 	stack_len = get_stack_len(&a);
-
 	if (!stack_sorted(&a))
 	{
 		if (stack_len == 2)
@@ -35,10 +34,7 @@ int     main(int argc, char **argv)
 		if (stack_len > 3)
 			push_swap(&a, &b);
 	}
-
-	printf("\nend radix\n");
-	print_both(&a, &b);
-
-	free_stack(&a);
+	if (a)
+		free_stack(&a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 18:20:13 by vscode            #+#    #+#             */
-/*   Updated: 2025/04/18 18:48:31 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/18 20:45:33 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void    print_tab(int *tab, int len)
     i = 0;
     while (i < len)
     {
-        //mettre mon printf
         printf("tab : %d\n", tab[i]);
         i++;
     }
@@ -154,8 +153,6 @@ void    push_swap(t_stack_node **a, t_stack_node **b)
         return ;
     stack_values = NULL;
     symplify_stack(a, &stack_values);
-    printf("before radix stack a\n");
-    print_stack(a);
     radix(a, b);
     if(stack_values)
         free(stack_values);

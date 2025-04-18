@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:01:24 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/18 18:21:45 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/18 20:36:08 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,10 @@ static t_atoi_check	no_sign_after_number(int *i, const char *nptr, t_atoi_check 
 {
 	while(nptr[*i])
 	{
-		printf("nptr[%d] : %c\n", *i, nptr[*i]);
+		DEBUG_PRINT(("DEBUG : nptr[%d] : %c\n", *i, nptr[*i]));
 		if (nptr[*i] == '-' || nptr[*i] == '+')
 		{
+			printf("Error\n");
 			check.error = 1;
 			return (check);
 		}
@@ -88,7 +89,8 @@ t_atoi_check	atol_overflow(const char *nptr)
 		|| ((nptr[0] == '-' || nptr[0] == '+')
 			&& !(nptr[1] >= '0' && nptr[1] <= '9')))
 	{
-		printf("empty string or sign alone\n");
+		DEBUG_PRINT(("DEBUG : empty string or sign alone\n"));
+		printf("Error\n");
 		check.error = 1;
 		return (check);
 	}
@@ -100,25 +102,29 @@ t_atoi_check	atol_overflow(const char *nptr)
 	check.error = has_invalid_char(nptr);
 	if (check.error)
 	{
-		printf("invalid char\n");
+		DEBUG_PRINT(("DEBUG : invalid char\n"));
+		printf("Error\n");
 		return (check);
 	}
 	check = get_atoi_sign(&i, nptr, check);
 	if (check.error)
 	{
-		printf("invalid atol\n");
+		DEBUG_PRINT(("DEBUG : invalid atol\n"));
+		printf("Error\n");
 		return (check);
 	}
 	check = get_long_value(&i, &long_nb, nptr, check);
 	if (check.error)
 	{
-		printf("input value overflowed int\n");
+		DEBUG_PRINT(("DEBUG : input_overflowed int\n"));
+		printf("Error\n");
 		return (check);
 	}
 	check = no_sign_after_number(&i, nptr, check);
 	if (check.error)
 	{
-		printf("there is a sign after number\n");
+		DEBUG_PRINT(("DEBUG : there is a sign after number\n"));
+		printf("Error\n");
 		return (check);
 	}
 	check.nb = (int)long_nb;
