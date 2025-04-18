@@ -10,6 +10,7 @@ checker_Mac
 *.swp
 *.tmp
 *.bak
+*.h.gch
 
 # Fichiers générés par l’éditeur (VS Code, etc.)
 .vscode/
