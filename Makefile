@@ -9,7 +9,7 @@ HEADER_DIR = ./header
 BIN_DIR = ./bin
 
 # Directories
-SRC = $(wildcard $(SRC_DIR)/*.c)
+SRC = $(shell find $(SRC_DIR) -name '*.c')
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # Targets
