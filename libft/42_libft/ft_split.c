@@ -3,45 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          #+#  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-12 09:35:59 by thmaitre          #+#    #+#             */
-/*   Updated: 2024-11-12 09:35:59 by thmaitre         ###   ########.fr       */
+/*   Created: 2024/11/12 09:35:59 by thmaitre          #+#    #+#             */
+/*   Updated: 2025/04/19 16:42:43 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_splits_count(char const *s, char c)
-{
-	int	i;
-	int	splits_count;
-
-	i = 1;
-	splits_count = 0;
-	while (s[i])
-	{
-		if (i && (s[i] != c) && (s[i - 1] == c || i - 1 == 0))
-			splits_count++;
-		i++;
-	}
-	return (splits_count);
-}
-
-static char	*ft_split_push(char *split_k, char const *s, int start, int end)
-{
-	int	i;
-
-	i = 0;
-	while (start < end)
-	{
-		split_k[i] = s[start];
-		start++;
-		i++;
-	}
-	split_k[i] = '\0';
-	return (split_k);
-}
 
 void	*free_char_tab(char **split, int k)
 {
@@ -54,50 +23,91 @@ void	*free_char_tab(char **split, int k)
 	return (NULL);
 }
 
-static char	**ft_alloc_and_populate(char **split, char const *s, char c)
+int     ft_count_words(char *str)
 {
-	int	i;
-	int	j;
-	int	k;
+    int is_word;
+    int count;
+    int i;
 
-	i = 0;
-	k = 0;
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		j = i;
-		while (s[j] && s[j] != c)
-			j++;
-		if (s[i] && j != 0)
-		{
-			split[k] = malloc(sizeof(**split) * ((j - i) + 1));
-			if (!split[k])
-				return (free_char_tab(split, k));
-			split[k] = ft_split_push(split[k], s, i, j);
-			k++;
-		}
-		i = j;
-	}
-	split[ft_splits_count(s, c)] = NULL;
-	return (split);
+    is_word = 0;
+    count = 0;
+    i = 0;
+    while(str[i] != '\0')
+    {
+        while(str[i] != ' ' && str[i] != '\f' && str[i] != '\t'
+			&& str[i] != '\n' && str[i] != '\r' && str[i] != '\v'
+				&& str[i] != '\0')
+        {
+            if (is_word == 0)
+            {
+                is_word = 1;
+                count++;
+            }
+            i++;
+        }
+        is_word = 0;
+        i++;
+    }
+    return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char    *ft_strndup(char *str, int n)
 {
-	char	**split;
+    char *dup;
+    int i;
 
-	if (s[0] == '\0')
-	{
-		split = malloc(sizeof (*split));
-		if (!split)
-			return (NULL);
-		split[0] = NULL;
-		return (split);
-	}
-	split = malloc(sizeof (*split) * (ft_splits_count(s, c) + 1));
+    dup = malloc(sizeof(char) * n + 1);
+	if (!dup)
+		return (NULL);
+    i = 0;
+    while(i != n)
+    {
+        dup[i] = str[i];
+        i++;
+    }
+    dup[i] = '\0';
+    return (dup);
+}
+
+int    assign_split(char *str, char** split)
+{
+    int end;
+    int beg;
+    int word;
+
+    end = 0;
+    beg = 0;
+    word = 0;
+    while (str[end])
+    {
+        while((ft_is_white_space(str[beg])) && str[beg] != '\0')
+            beg++;
+        end = beg;
+        while((!ft_is_white_space(str[beg])) && str[end] != '\0')
+            end++;
+        split[word] = ft_strndup(&str[beg], end - beg);
+		if (!split[word])
+		{
+			free_char_tab(split, word);
+			return (0);
+		}
+        beg = end;
+        word++;
+    }
+	return (1);
+}
+
+char    **ft_split(char *str)
+{
+    int count_words;
+    char **split;
+
+    count_words = ft_count_words(str);
+    split = malloc(sizeof(char *) * (count_words + 1));
 	if (!split)
 		return (NULL);
-	split = ft_alloc_and_populate(split, s, c);
-	return (split);
+    if(!assign_split(str, split))
+		return (NULL);
+    split[count_words] = NULL;
+    return (split);
 }

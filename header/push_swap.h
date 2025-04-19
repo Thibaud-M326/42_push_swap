@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:58:15 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/18 20:48:54 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/19 14:08:49 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
     #include <stdio.h>
-    #define DEBUG_MODE 0
+    #define DEBUG_MODE 1
     #define DEBUG_PRINT(x) if (DEBUG_MODE) { printf x; }
 
 # include <unistd.h>

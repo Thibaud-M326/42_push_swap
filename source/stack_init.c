@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/18 20:38:41 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/19 16:41:03 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
 
 int	push_back_stack(t_stack_node **a, int value)
 {
@@ -70,23 +71,44 @@ int	is_duplicate_num_in_stack(t_stack_node **a)
 
 int stack_init(t_stack_node **a, char **argv)
 {
-    int i;
 	t_atoi_check	check;
+    int				i;
+	char			**splited_argv;
+    int				j;
+
+		(void)a;
 
     i = 0;
 	check.error = 0;
+	DEBUG_PRINT(("DEBUG : stack_init\n"));
     while (argv[i] && check.error == 0)
     {
-		check = atol_overflow(argv[i]);
-		if (check.error == 0)
-        	check.error = push_back_stack(a, check.nb);
-		if (check.error == 0)
-			check.error = is_duplicate_num_in_stack(a);
-        if (check.error == 1)
-        {
-            free_stack(a);
-            return (0);
-        }
+			j = 0;
+			splited_argv = ft_split(argv[i]);
+			while (splited_argv[j])
+			{
+				printf("argv[%d] splited_argv[%d] : %s\n", i, j, splited_argv[j]);
+				j++;
+			}
+
+
+
+		// DEBUG_PRINT(("DEBUG : %s\n", splited_argv[0]));
+		// while (splited_argv[j_split])
+		// {
+			// check = atol_overflow(splited_argv[j_split]);
+			// check = atol_overflow(argv[i]);
+			// if (check.error == 0)
+			// 	check.error = push_back_stack(a, check.nb);
+			// if (check.error == 0)
+			// 	check.error = is_duplicate_num_in_stack(a);
+			// if (check.error == 1)
+			// {
+			// 	free_stack(a);
+			// 	return (0);
+			// }
+    	// 	j_split++;
+		// }
         i++;
     }
     return (1);
