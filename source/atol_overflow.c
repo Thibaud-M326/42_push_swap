@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   atol_overflow.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:01:24 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/18 20:36:08 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/19 17:20:06 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ t_atoi_check	atol_overflow(const char *nptr)
 		|| ((nptr[0] == '-' || nptr[0] == '+')
 			&& !(nptr[1] >= '0' && nptr[1] <= '9')))
 	{
+		//pas d'erreur pour le nptr[0] on sort juste
 		DEBUG_PRINT(("DEBUG : empty string or sign alone\n"));
 		printf("Error\n");
 		check.error = 1;
