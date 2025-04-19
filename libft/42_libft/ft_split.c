@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:35:59 by thmaitre          #+#    #+#             */
-/*   Updated: 2025/04/19 23:14:03 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/19 23:28:06 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char    *ft_strndup(char *str, int n)
     int i;
 
     printf("str : %s\n", str);
-    printf("n   : %d\n\n", n);
+    printf("n   : %d\n", n);
     dup = malloc(sizeof(char) * n + 1);
     if (!dup)
         return (NULL);
@@ -104,13 +104,10 @@ char    **ft_split(char *str)
 
     count_words = ft_count_words(str);
     printf("count_words : %d\n", count_words);
-    if (count_words > 0)
-    {
-        split = malloc(sizeof(char *) * (count_words + 1));
-        if (!split)
-            return (NULL);
-        assign_split(str, split);
-    }
+    split = malloc(sizeof(char *) * (count_words + 1));
+    if (!split)
+        return (NULL);
+    assign_split(str, split);
     split[count_words] = NULL;
     return (split);
 }
