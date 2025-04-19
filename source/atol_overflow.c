@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   atol_overflow.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:01:24 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/19 17:20:06 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/19 16:10:05 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static int	has_invalid_char(const char *nptr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (nptr[i])
 	{
-		if ((nptr[i] < '0' || nptr[i] > '9') 
+		if ((nptr[i] < '0' || nptr[i] > '9')
 			&& nptr[i] != '-' && nptr[i] != '+')
 			return (1);
 		i++;
@@ -29,7 +29,7 @@ static int	has_invalid_char(const char *nptr)
 
 static t_atoi_check	get_atoi_sign(int *i, const char *nptr, t_atoi_check check)
 {
-	if(check.error == 1)
+	if (check.error == 1)
 		return (check);
 	while ((nptr[*i] >= 9 && nptr[*i] <= 13) || nptr[*i] == 32)
 		(*i)++;
@@ -47,12 +47,12 @@ static t_atoi_check	get_atoi_sign(int *i, const char *nptr, t_atoi_check check)
 	return (check);
 }
 
-static t_atoi_check	get_long_value(int *i, long *long_nb, const char *nptr, t_atoi_check check)
+static	t_atoi_check	get_long_value(int *i, long *long_nb, const char *nptr, t_atoi_check check)
 {
 	while (nptr[*i] >= '0' && nptr[*i] <= '9' && check.error == 0)
 	{
 		*long_nb = *long_nb * 10 + (nptr[*i] - '0');
-        if ((check.sign == 1 && *long_nb > 2147483647)
+		if ((check.sign == 1 && *long_nb > 2147483647)
 			|| (check.sign == -1 && *long_nb > 2147483648))
 		{
 			check.error = 1;
@@ -65,7 +65,7 @@ static t_atoi_check	get_long_value(int *i, long *long_nb, const char *nptr, t_at
 
 static t_atoi_check	no_sign_after_number(int *i, const char *nptr, t_atoi_check check)
 {
-	while(nptr[*i])
+	while (nptr[*i])
 	{
 		DEBUG_PRINT(("DEBUG : nptr[%d] : %c\n", *i, nptr[*i]));
 		if (nptr[*i] == '-' || nptr[*i] == '+')
@@ -81,11 +81,11 @@ static t_atoi_check	no_sign_after_number(int *i, const char *nptr, t_atoi_check 
 
 t_atoi_check	atol_overflow(const char *nptr)
 {
-	t_atoi_check check;
-	long	long_nb;
-	int		i;
-	
-	if ((!nptr || nptr[0] == '\0') 
+	t_atoi_check	check;
+	long			long_nb;
+	int				i;
+
+	if ((!nptr || nptr[0] == '\0')
 		|| ((nptr[0] == '-' || nptr[0] == '+')
 			&& !(nptr[1] >= '0' && nptr[1] <= '9')))
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:03:09 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/19 17:22:00 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/19 16:10:41 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-int     main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;
@@ -24,7 +24,7 @@ int     main(int argc, char **argv)
 	b = NULL;
 	if (1 == argc || 2 == argc || !argv[1][0])
 		return (1);
-	if(!stack_init(&a, &argv[1]))
+	if (!stack_init(&a, &argv[1]))
 		return (1);
 	stack_len = get_stack_len(&a);
 	print_both(&a, &b);
