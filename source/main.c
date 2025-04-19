@@ -6,13 +6,11 @@
 /*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:03:09 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/19 01:50:21 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/19 13:07:01 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
-#include "ft_printf.h"
 
 int     main(int argc, char **argv)
 {
@@ -22,8 +20,7 @@ int     main(int argc, char **argv)
 	
 	a = NULL;
 	b = NULL;
-
-	if (1 == argc || (2 == argc) || !argv[1][0])
+	if (1 == argc || 2 == argc || !argv[1][0])
 		return (1);
 	if(!stack_init(&a, &argv[1]))
 		return (1);
