@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:58:15 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/19 14:08:49 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/19 19:54:06 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void            push_a(t_stack_node **a, t_stack_node **b);
 void            push_b(t_stack_node **a, t_stack_node **b);
 
 // stack_utils.c
+void            free_split(char **split, int k);
 void            free_stack(t_stack_node **a);
 void            print_stack(t_stack_node **a);
-void            print_stack_memory(t_stack_node **a);
 void            print_both(t_stack_node **a, t_stack_node **b);
 t_stack_node    *get_last_node(t_stack_node **a);
 t_stack_node    *get_second_last_node(t_stack_node **a);

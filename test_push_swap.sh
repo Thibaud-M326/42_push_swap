@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EXEC=./a.out
+EXEC=./bin/push_swap
 
 GREEN="\033[0;32m"
 RED="\033[0;31m"
@@ -58,6 +58,10 @@ success_expected 2147483647 -2147483648
 valgrind_check 2147483647 -2147483648
 success_expected 001 002 -003
 valgrind_check 001 002 -003
+success_expected 3 '' 4
+valgrind_check 3 '' 4
+success_expected " " 3 '' " " 4
+valgrind_check " " 3 '' " " 4
 
 echo -e "\n${YELLOW}=== TESTING INVALID FORMATS ===${RESET}"
 error_expected 3 2 1 --1
@@ -69,7 +73,6 @@ error_expected 42-
 error_expected 3.14 2
 error_expected 42a 33
 error_expected "  "
-error_expected 3 '' 4
 error_expected - 42
 error_expected 42 - 43
 

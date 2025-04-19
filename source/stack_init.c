@@ -3,15 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/19 17:20:03 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/19 23:11:22 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
+
+void	free_split(char **split, int k)
+{
+	while (k >= 0)
+	{
+		printf("free split[%d]: %s\n", k, split[k]);
+		free(split[k]);
+		k--;
+	}
+	free(split);
+}
 
 int	push_back_stack(t_stack_node **a, int value)
 {
@@ -39,8 +50,8 @@ int	push_back_stack(t_stack_node **a, int value)
 
 int	is_duplicate_num_in_stack(t_stack_node **a)
 {
-	t_stack_node *i;	
-	t_stack_node *j;	
+	t_stack_node *i;
+	t_stack_node *j;
 
 	if(!a || !*a)
 		return (1);
@@ -69,6 +80,14 @@ int	is_duplicate_num_in_stack(t_stack_node **a)
 	return (0);
 }
 
+void	free_split_all(char **split)
+{
+	int i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+}
+
 int stack_init(t_stack_node **a, char **argv)
 {
 	t_atoi_check	check;
@@ -91,11 +110,14 @@ int stack_init(t_stack_node **a, char **argv)
 				check.error = is_duplicate_num_in_stack(a);
 			if (check.error == 1)
 			{
+				free_split_all(splited_argv);
 				free_stack(a);
 				return (0);
 			}
 			j++;
 		}
+		if (splited_argv)
+			free_split_all(splited_argv);
         i++;
     }
     return (1);

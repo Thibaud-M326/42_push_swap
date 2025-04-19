@@ -6,13 +6,11 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:03:09 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/19 16:10:41 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/19 19:53:03 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "libft.h"
-#include "ft_printf.h"
+#include "../header/push_swap.h"
 
 int	main(int argc, char **argv)
 {
@@ -43,6 +41,8 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+
+
 // int main(int argc, char **argv)
 // {
 // 	char **split;
@@ -50,18 +50,27 @@ int	main(int argc, char **argv)
 // 	int j;
 
 // 	(void)argc;
-// 	i = 0;
+// 	i = 1;
 // 	j = 0;
 
+// 	while (argv[i])
+// 	{
+// 		printf("argc[%d] : %s\n", i, argv[i]);
+// 		i++;
+// 	}
+// 	printf("\n");
+
+// 	i = 1;
 // 	while (argv[i])
 // 	{
 // 		split = ft_split(argv[i]);
 // 		j = 0;
 // 		while (split[j])
 // 		{
-// 			printf("split [%d] : %s\n", j, split[j]);
+// 			printf("split [%d] : %s\n\n", j, split[j]);
 // 			j++;
 // 		}
+// 		free_split(split, j);
 // 		i++;
 // 	}
 // }

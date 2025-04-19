@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 22:51:19 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/18 21:58:03 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/19 19:54:46 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void    print_both(t_stack_node **a, t_stack_node **b)
 {
     t_stack_node    *current_a;
     t_stack_node    *current_b;
-    
+
     current_a = *a;
     current_b = *b;
     while(current_a != NULL)
