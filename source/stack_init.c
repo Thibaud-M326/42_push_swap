@@ -26,34 +26,34 @@ void	free_split(char **split, int k)
 
 int	push_back_stack(t_stack_node **a, int value)
 {
-    t_stack_node    *new_node;
-    t_stack_node    *current;
+	t_stack_node	*new_node;
+	t_stack_node	*current;
 
-    if (!a)
-        return (1);
-    new_node = malloc(sizeof(t_stack_node));
-    if(!new_node)
-        return (1);
-    new_node->value = value;
-    new_node->next = NULL;
-    if (!*a)
-    {
-        *a = new_node;
-        return (0);
-    }
-    current = *a;
-    while (current->next != NULL)
-        current = current->next;
-    current->next = new_node;
-    return (0);
+	if (!a)
+		return (1);
+	new_node = malloc(sizeof(t_stack_node));
+	if (!new_node)
+		return (1);
+	new_node->value = value;
+	new_node->next = NULL;
+	if (!*a)
+	{
+		*a = new_node;
+		return (0);
+	}
+	current = *a;
+	while (current->next != NULL)
+		current = current->next;
+	current->next = new_node;
+	return (0);
 }
 
 int	is_duplicate_num_in_stack(t_stack_node **a)
 {
-	t_stack_node *i;
-	t_stack_node *j;
+	t_stack_node	*i;
+	t_stack_node	*j;
 
-	if(!a || !*a)
+	if (!a || !*a)
 		return (1);
 	i = *a;
 	while (i->next)
@@ -82,7 +82,9 @@ int	is_duplicate_num_in_stack(t_stack_node **a)
 
 void	free_split_all(char **split)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (split[i])
 	{
 		printf("split[%d] is free : %s\n", i, split[i]);
@@ -91,25 +93,19 @@ void	free_split_all(char **split)
 	free(split);
 }
 
-int stack_init(t_stack_node **a, char **argv)
+int	stack_init(t_stack_node **a, char **argv)
 {
 	t_atoi_check	check;
 	char			**splited_argv;
-    int				i;
-    int				j;
+	int				i;
+	int				j;
 
-    i = 0;
+	i = 0;
 	check.error = 0;
-    while (argv[i] && check.error == 0)
-    {
+	while (argv[i] && check.error == 0)
+	{
 		j = 0;
 		splited_argv = ft_split(argv[i]);
-		if (!splited_argv || !splited_argv[0])
-		{
-			free_split_all(splited_argv);
-			i++;
-			continue;
-		}
 		while (splited_argv[j])
 		{
 			printf("splited_argv[%d] : %s\n", j, splited_argv[j]);
@@ -131,7 +127,7 @@ int stack_init(t_stack_node **a, char **argv)
 			printf("free_split at j : %d\n", j);
 			free_split_all(splited_argv);
 		}
-        i++;
-    }
-    return (1);
+		i++;
+	}
+	return (1);
 }
