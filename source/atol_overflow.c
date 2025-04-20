@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:01:24 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 14:58:29 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 16:45:29 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ t_atoi_check	atol_overflow(const char *nptr)
 	t_atoi_check	check;
 	long			long_nb;
 	int				i;
-
-	printf("nptr in atol : %s\n", nptr);
 
 	if ((!nptr || nptr[0] == '\0')
 		|| ((nptr[0] == '-' || nptr[0] == '+')
