@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 16:10:44 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 20:50:39 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,44 @@ int	push_split_stack(t_stack_node **a, char **splited_argv)
 	return (1);
 }
 
+int	is_empty_argv(char **argv)
+{
+	int	i;
+	int	j;
+	int	only_space;
+
+	i = 0;
+	while (argv[i])
+	{
+		j = 0;
+		only_space = 1;
+		while (argv[i][j])
+		{
+			if (!ft_is_white_space(argv[i][j]))
+			{
+				only_space = 0;
+				break ;
+			}
+			j++;
+		}
+		if (only_space)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	stack_init(t_stack_node **a, char **argv)
 {
 	char			**splited_argv;
 	int				i;
 
 	i = 0;
+	if (is_empty_argv(argv))
+	{
+		ft_printf("Error\n");
+		return (0);
+	}
 	while (argv[i])
 	{
 		splited_argv = ft_split(argv[i]);

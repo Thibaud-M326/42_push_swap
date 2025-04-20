@@ -6,20 +6,15 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:58:15 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 16:02:28 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 21:03:27 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define DEBUG_MODE 1
-# define DEBUG_PRINT(x) if (DEBUG_MODE) { printf x; }
-
 # include <unistd.h>
 # include <stdlib.h>
-
-	# include <stdio.h>
 
 typedef struct s_atoi_check
 {
@@ -40,7 +35,7 @@ typedef struct s_stack_node
 void			push_swap(t_stack_node **a, t_stack_node **b);
 
 // atol_overflow.c
-t_atoi_check	atol_overflow(const char *nptr);
+t_atoi_check	atol_overflow(char *nptr);
 
 // stack_init.c
 int				push_back_stack(t_stack_node **a, int value);

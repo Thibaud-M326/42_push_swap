@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 15:04:31 by vscode            #+#    #+#             */
-/*   Updated: 2025/04/20 16:02:21 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 20:36:48 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	free_stack(t_stack_node **a)
 		free(*a);
 		*a = temp;
 	}
+	a = NULL;
 }
 
 void	free_split(char **split)
@@ -37,4 +38,5 @@ void	free_split(char **split)
 		free(split[i++]);
 	}
 	free(split);
+	split = NULL;
 }

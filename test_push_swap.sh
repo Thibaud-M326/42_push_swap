@@ -28,11 +28,22 @@ fail() {
 }
 
 error_expected() {
-    if $EXEC "$@" > /dev/null 2>&1; then
-        echo -e "$YELLOW[ERROR NOT DETECTED]$RESET '$*'"
-        fail
-    else
+    OUTPUT=$($EXEC "$@" 2>&1)
+    if [ "$OUTPUT" == "Error" ]; then
         pass
+    else
+        echo -e "$YELLOW[UNEXPECTED OUTPUT]$RESET '$*' → Got: '$OUTPUT'"
+        fail
+    fi
+}
+
+error_expected_blank() {
+    OUTPUT=$($EXEC "$@" 2>&1)
+    if [ -z "$OUTPUT" ]; then
+        pass
+    else
+        echo -e "$YELLOW[UNEXPECTED NON-BLANK OUTPUT]$RESET '$*' → Got: '$OUTPUT'"
+        fail
     fi
 }
 
@@ -58,21 +69,22 @@ success_expected 2147483647 -2147483648
 valgrind_check 2147483647 -2147483648
 success_expected 001 002 -003
 valgrind_check 001 002 -003
-success_expected 3 '' 4
-valgrind_check 3 '' 4
-success_expected " " 3 '' " " 4
-valgrind_check " " 3 '' " " 4
 
 echo -e "\n${YELLOW}=== TESTING INVALID FORMATS ===${RESET}"
+error_expected 3 '' 4
+error_expected 3 ' ' 4
+error_expected 3 4 " "
+error_expected " " 3 ' ' 4
+error_expected " " 3 '' " " 4
 error_expected 3 2 1 --1
-error_expected --42
-error_expected ++42
-error_expected -+42
-error_expected +-42
-error_expected 42-
+error_expected 2 3 4 --42
+error_expected 3 2 4 ++42
+error_expected 2 4 3 -+42
+error_expected 3 2 4 +-42
+error_expected 32 1 2 42-
 error_expected 3.14 2
 error_expected 42a 33
-error_expected "  "
+error_expected "  " 3 5 4
 error_expected - 42
 error_expected 42 - 43
 
@@ -84,12 +96,18 @@ success_expected 2147483647 2 3
 valgrind_check 2147483647 2 3
 success_expected -2147483648 2 3
 valgrind_check -2147483648 2 3
-error_expected 2147483648
-error_expected -2147483649
+error_expected_blank 2147483648
+error_expected_blank -2147483649
 
 echo -e "\n${YELLOW}=== TESTING SPLIT ARGS ===${RESET}"
 success_expected 1 3 2 4 5
 valgrind_check 1 3 2 4 5
+success_expected 1 3 "9 7 8"
+valgrind_check 1 3 "9 7 8"
+success_expected "3 2" "4 5" 6 7
+valgrind_check "3 2" "4 5" 6 7
+success_expected "1" "2" "3"
+valgrind_check "1" "2" "3"
 error_expected 1 ++3 4
 
 echo -e "\n${YELLOW}=== ALL TESTS DONE ===${RESET}"
