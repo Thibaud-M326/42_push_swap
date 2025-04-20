@@ -111,3 +111,28 @@ valgrind_check "1" "2" "3"
 error_expected 1 ++3 4
 
 echo -e "\n${YELLOW}=== ALL TESTS DONE ===${RESET}"
+echo -e "\n${YELLOW}=== TESTING LITTLE INPUTS INSTRUCTION COUNT ===${RESET}"
+
+check_instruction_count() {
+    INPUT="$*"
+    EXPECTED_MAX="$1"
+    shift
+    COUNT=$($EXEC "$@" | wc -l)
+    if [ "$COUNT" -le "$EXPECTED_MAX" ]; then
+        echo -e "$YELLOW[INSTRUCTIONS OK]$RESET '$*' → $COUNT instructions"
+        pass
+    else
+        echo -e "$YELLOW[TOO MANY INSTRUCTIONS]$RESET '$*' → $COUNT instructions (max: $EXPECTED_MAX)"
+        fail
+    fi
+}
+
+check_instruction_count 12 3 2 -52 6 -2
+check_instruction_count 12 3 2 -52 -6 -2
+check_instruction_count 12 3 -3232 -52 -6 -2
+check_instruction_count 12 3 -3232 52 -6 -2
+check_instruction_count 12 3 -3232 52 -6 2
+check_instruction_count 12 -3 -3232 52 -6 2
+check_instruction_count 12 -3 -3232 522323 -6 2
+check_instruction_count 12 -3 -3232 522323 -6 -2
+check_instruction_count 12 3 -3232 522323 -6 -2

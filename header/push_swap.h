@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:58:15 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 21:03:27 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 23:31:30 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int				stack_init(t_stack_node **a, char **argv);
 // stack_sort.c
 int				stack_sorted(t_stack_node **a);
 void			stack_sort_three(t_stack_node **a);
+void			stack_sort_four(t_stack_node **a, t_stack_node **b);
+void			stack_sort_five(t_stack_node **a, t_stack_node **b);
 
 // stack_swap.c
 void			swap_a(t_stack_node **a);
