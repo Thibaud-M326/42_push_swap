@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_white_space.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:33:27 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/19 16:44:06 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/20 14:55:10 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_is_white_space(char c)
+int	ft_is_white_space(char c)
 {
 	if ((c == ' ' || c == '\f' || c == '\t'
-		|| c == '\n' || c == '\r' || c == '\v'))
+			|| c == '\n' || c == '\r' || c == '\v'))
 		return (1);
 	return (0);
 }
