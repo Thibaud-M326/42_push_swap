@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:03:09 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/19 19:53:03 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 14:06:43 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,37 +40,3 @@ int	main(int argc, char **argv)
 		free_stack(&a);
 	return (0);
 }
-
-
-
-// int main(int argc, char **argv)
-// {
-// 	char **split;
-// 	int i;
-// 	int j;
-
-// 	(void)argc;
-// 	i = 1;
-// 	j = 0;
-
-// 	while (argv[i])
-// 	{
-// 		printf("argc[%d] : %s\n", i, argv[i]);
-// 		i++;
-// 	}
-// 	printf("\n");
-
-// 	i = 1;
-// 	while (argv[i])
-// 	{
-// 		split = ft_split(argv[i]);
-// 		j = 0;
-// 		while (split[j])
-// 		{
-// 			printf("split [%d] : %s\n\n", j, split[j]);
-// 			j++;
-// 		}
-// 		free_split(split, j);
-// 		i++;
-// 	}
-// }

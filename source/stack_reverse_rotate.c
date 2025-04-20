@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_reverse_rotate.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:05:19 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/15 17:10:10 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/20 14:05:04 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void    reverse_rotate_a(t_stack_node **a)
     t_stack_node    *second_last;
     if (!a || !*a || !(*a)->next)
         return ;
-    last = get_last_node(a); 
+    last = get_last_node(a);
     second_last = get_second_last_node(a);
     second_last->next = NULL;
     last->next = *a;
@@ -32,7 +32,7 @@ void    reverse_rotate_b(t_stack_node **b)
     t_stack_node    *second_last;
     if (!b || !*b || !(*b)->next)
         return ;
-    last = get_last_node(b); 
+    last = get_last_node(b);
     second_last = get_second_last_node(b);
     second_last->next = NULL;
     last->next = *b;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:04:15 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/15 17:09:28 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/20 14:05:03 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void    rotate_b(t_stack_node **b)
     if (!b || !*b || !(*b)->next)
         return ;
     last = get_last_node(b);
-    
+
     temp = (*b)->next;
     (*b)->next = NULL;
     last->next = *b;
@@ -43,7 +43,7 @@ void    rotate_b(t_stack_node **b)
 
 void    rotate_rotate(t_stack_node **a, t_stack_node **b)
 {
-    rotate_a(a);    
+    rotate_a(a);
     rotate_b(b);
     write(1, "rr\n", 3);
 }
