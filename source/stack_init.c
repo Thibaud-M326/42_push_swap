@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/19 23:32:50 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 00:15:30 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,10 @@ void	free_split_all(char **split)
 {
 	int i = 0;
 	while (split[i])
+	{
+		printf("split[%d] is free : %s\n", i, split[i]);
 		free(split[i++]);
+	}
 	free(split);
 }
 
@@ -101,8 +104,15 @@ int stack_init(t_stack_node **a, char **argv)
     {
 		j = 0;
 		splited_argv = ft_split(argv[i]);
+		if (!splited_argv || !splited_argv[0])
+		{
+			free_split_all(splited_argv);
+			i++;
+			continue;
+		}
 		while (splited_argv[j])
 		{
+			printf("splited_argv[%d] : %s\n", j, splited_argv[j]);
 			check = atol_overflow(splited_argv[j]);
 			if (check.error == 0)
 				check.error = push_back_stack(a, check.nb);
@@ -117,7 +127,10 @@ int stack_init(t_stack_node **a, char **argv)
 			j++;
 		}
 		if (splited_argv)
+		{
+			printf("free_split at j : %d\n", j);
 			free_split_all(splited_argv);
+		}
         i++;
     }
     return (1);
