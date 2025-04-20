@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:58:15 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 15:33:51 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 16:02:28 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void			print_both(t_stack_node **a, t_stack_node **b);
 
 // free_utils.c
 void			free_stack(t_stack_node **a);
-void			free_split_all(char **split);
+void			free_split(char **split);
 
 // symplify_stack.c
 void			stack_array(t_stack_node **a, int **int_array, int *stack_len);

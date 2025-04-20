@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 15:10:07 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 16:03:54 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,40 +69,44 @@ int	is_duplicate_num_in_stack(t_stack_node **a)
 	return (0);
 }
 
-int	stack_init(t_stack_node **a, char **argv)
+int	push_split_stack(t_stack_node **a, char **splited_argv)
 {
 	t_atoi_check	check;
-	char			**splited_argv;
 	int				i;
-	int				j;
 
 	i = 0;
 	check.error = 0;
-	while (argv[i] && check.error == 0)
+	while (splited_argv[i])
 	{
-		j = 0;
+		check = atol_overflow(splited_argv[i]);
+		if (check.error == 0)
+			check.error = push_back_stack(a, check.nb);
+		if (check.error == 0)
+			check.error = is_duplicate_num_in_stack(a);
+		if (check.error == 1)
+		{
+			free_split(splited_argv);
+			free_stack(a);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	stack_init(t_stack_node **a, char **argv)
+{
+	char			**splited_argv;
+	int				i;
+
+	i = 0;
+	while (argv[i])
+	{
 		splited_argv = ft_split(argv[i]);
-		while (splited_argv[j])
-		{
-			printf("splited_argv[%d] : %s\n", j, splited_argv[j]);
-			check = atol_overflow(splited_argv[j]);
-			if (check.error == 0)
-				check.error = push_back_stack(a, check.nb);
-			if (check.error == 0)
-				check.error = is_duplicate_num_in_stack(a);
-			if (check.error == 1)
-			{
-				free_split_all(splited_argv);
-				free_stack(a);
-				return (0);
-			}
-			j++;
-		}
+		if (!push_split_stack(a, splited_argv))
+			return (0);
 		if (splited_argv)
-		{
-			printf("free_split at j : %d\n", j);
-			free_split_all(splited_argv);
-		}
+			free_split(splited_argv);
 		i++;
 	}
 	return (1);
