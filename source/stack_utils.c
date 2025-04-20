@@ -6,26 +6,11 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 22:51:19 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 14:34:53 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 15:09:46 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_stack(t_stack_node **a)
-{
-	t_stack_node	*temp;
-
-	if (!a || !*a)
-		return ;
-	while (*a)
-	{
-		temp = (*a)->next;
-		free(*a);
-		*a = temp;
-	}
-	DEBUG_PRINT(("stack freed"));
-}
 
 t_stack_node	*get_last_node(t_stack_node **a)
 {
@@ -66,4 +51,19 @@ int	get_stack_len(t_stack_node **a)
 		stack_len++;
 	}
 	return (stack_len);
+}
+
+int	is_stack_empty(t_stack_node **b)
+{
+	if (!*b)
+		return (1);
+	return (0);
+}
+
+int	get_stack_top_value(t_stack_node **a)
+{
+	int	num;
+
+	num = (*a)->value;
+	return (num);
 }

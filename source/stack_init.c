@@ -6,23 +6,12 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 00:15:30 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 15:10:07 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
-
-void	free_split(char **split, int k)
-{
-	while (k >= 0)
-	{
-		printf("free split[%d]: %s\n", k, split[k]);
-		free(split[k]);
-		k--;
-	}
-	free(split);
-}
 
 int	push_back_stack(t_stack_node **a, int value)
 {
@@ -78,19 +67,6 @@ int	is_duplicate_num_in_stack(t_stack_node **a)
 		i = i->next;
 	}
 	return (0);
-}
-
-void	free_split_all(char **split)
-{
-	int	i;
-
-	i = 0;
-	while (split[i])
-	{
-		printf("split[%d] is free : %s\n", i, split[i]);
-		free(split[i++]);
-	}
-	free(split);
 }
 
 int	stack_init(t_stack_node **a, char **argv)

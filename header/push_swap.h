@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:58:15 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 14:45:56 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 15:10:01 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,18 @@ void			push_a(t_stack_node **a, t_stack_node **b);
 void			push_b(t_stack_node **a, t_stack_node **b);
 
 // stack_utils.c
-void			free_split(char **split, int k);
-void			free_stack(t_stack_node **a);
-void			print_stack(t_stack_node **a);
-void			print_both(t_stack_node **a, t_stack_node **b);
 t_stack_node	*get_last_node(t_stack_node **a);
 t_stack_node	*get_second_last_node(t_stack_node **a);
 int				get_stack_len(t_stack_node **a);
+int				is_stack_empty(t_stack_node **b);
+int				get_stack_top_value(t_stack_node **a);
 
 // stack_print.c
 void			print_stack(t_stack_node **a);
 void			print_both(t_stack_node **a, t_stack_node **b);
+
+// free_utils.c
+void			free_stack(t_stack_node **a);
+void			free_split_all(char **split);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 18:20:13 by vscode            #+#    #+#             */
-/*   Updated: 2025/04/20 14:53:35 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 15:18:37 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	get_stack_values(t_stack_node **a, int **stack_values, int *stack_len)
+void	get_stack_value_array(t_stack_node **a, int **int_array, int *stack_len)
 {
 	t_stack_node	*node;
 	int				i;
@@ -20,32 +20,20 @@ static void	get_stack_values(t_stack_node **a, int **stack_values, int *stack_le
 	if (!a || !*a || !(*a)->next)
 		return ;
 	*stack_len = get_stack_len(a);
-	*stack_values = malloc(sizeof(int) * (*stack_len));
-	if (!*stack_values)
+	*int_array = malloc(sizeof(int) * (*stack_len));
+	if (!*int_array)
 		return ;
 	node = *a;
 	i = 0;
 	while (node)
 	{
-		(*stack_values)[i] = node->value;
+		(*int_array)[i] = node->value;
 		node = node->next;
 		i++;
 	}
 }
 
-void	print_tab(int *tab, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		printf("tab : %d\n", tab[i]);
-		i++;
-	}
-}
-
-static void	sort_int_tab(int *tab, int len)
+void	sort_int_tab(int *tab, int len)
 {
 	int	i;
 	int	j;
@@ -71,7 +59,7 @@ static void	sort_int_tab(int *tab, int len)
 	}
 }
 
-void	symplify(t_stack_node **a, int *stack_values, int stack_len)
+void	symplify(t_stack_node **a, int *int_array, int stack_len)
 {
 	t_stack_node	*node;
 	int				i;
@@ -82,7 +70,7 @@ void	symplify(t_stack_node **a, int *stack_values, int stack_len)
 		i = 0;
 		while (i < stack_len)
 		{
-			if (node->value == stack_values[i])
+			if (node->value == int_array[i])
 				node->value = i;
 			i++;
 		}
@@ -90,28 +78,13 @@ void	symplify(t_stack_node **a, int *stack_values, int stack_len)
 	}
 }
 
-static void	symplify_stack(t_stack_node **a, int **stack_values)
+void	symplify_stack(t_stack_node **a, int **int_array)
 {
 	int	stack_len;
 
-	get_stack_values(a, stack_values, &stack_len);
-	sort_int_tab(*stack_values, stack_len);
-	symplify(a, *stack_values, stack_len);
-}
-
-static int	get_stack_top_value(t_stack_node **a)
-{
-	int	num;
-
-	num = (*a)->value;
-	return (num);
-}
-
-int	is_stack_empty(t_stack_node **b)
-{
-	if (!*b)
-		return (1);
-	return (0);
+	get_stack_value_array(a, int_array, &stack_len);
+	sort_int_tab(*int_array, stack_len);
+	symplify(a, *int_array, stack_len);
 }
 
 void	radix(t_stack_node **a, t_stack_node **b)
@@ -147,13 +120,13 @@ void	radix(t_stack_node **a, t_stack_node **b)
 
 void	push_swap(t_stack_node **a, t_stack_node **b)
 {
-	int	*stack_values;
+	int	*int_array;
 
 	if (!a || !*a || !b)
 		return ;
-	stack_values = NULL;
-	symplify_stack(a, &stack_values);
+	int_array = NULL;
+	symplify_stack(a, &int_array);
 	radix(a, b);
-	if (stack_values)
-		free(stack_values);
+	if (int_array)
+		free(int_array);
 }
