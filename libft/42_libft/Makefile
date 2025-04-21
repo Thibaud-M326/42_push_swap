@@ -3,6 +3,7 @@
 NAME	:= libft.a
 HDRS    := libft.h
 MAKEFILE:= Makefile
+HDRS    := ../../header
 
 #------------------------------------------------#
 #   INGREDIENTS                                  #
@@ -88,8 +89,8 @@ $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	$(info CREATED $(NAME))
 
-%.o: %.c $(HDRS) $(MAKEFILE)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+%.o: %.c $(HDRS)/libft.h $(MAKEFILE)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -I$(HDRS) -c -o $@ $<
 	$(info CREATED $@ WITH $<)
 
 bonus: $(OBJS) $(OBJS_BONUS)

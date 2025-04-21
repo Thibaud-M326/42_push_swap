@@ -1,7 +1,7 @@
-################# MAKEFILE LIBFT #################
+################# MAKEFILE PRINTF #################
 
 NAME	:= libftprintf.a
-HDRS    := ft_printf.h
+HDRS    := ../../header
 MAKEFILE:= Makefile
 
 #------------------------------------------------#
@@ -39,8 +39,8 @@ $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	$(info CREATED $(NAME))
 
-%.o: %.c $(HDRS) $(MAKEFILE)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+%.o: %.c $(HDRS)/ft_printf.h $(MAKEFILE)
+	$(CC) $(CFLAGS) -I$(HDRS) $(CPPFLAGS) -c -o $@ $<
 	$(info CREATED $@ WITH $<)
 
 # bonus: $(OBJS) $(OBJS_BONUS)
