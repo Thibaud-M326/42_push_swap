@@ -96,8 +96,8 @@ success_expected 2147483647 2 3
 valgrind_check 2147483647 2 3
 success_expected -2147483648 2 3
 valgrind_check -2147483648 2 3
-error_expected_blank 2147483648
-error_expected_blank -2147483649
+error_expected 2147483648
+error_expected -2147483649
 
 echo -e "\n${YELLOW}=== TESTING SPLIT ARGS ===${RESET}"
 success_expected 1 3 2 4 5

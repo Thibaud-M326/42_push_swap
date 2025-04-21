@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/21 00:11:08 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/21 11:11:24 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	is_duplicate_num_in_stack(t_stack_node **a)
 		{
 			if (i->value == j->value)
 			{
-				ft_printf("Error\n");
+				ft_putendl_fd("Error", 2);
 				return (1);
 			}
 			j = j->next;
@@ -119,7 +119,7 @@ int	stack_init(t_stack_node **a, char **argv)
 	i = 0;
 	if (is_empty_argv(argv))
 	{
-		ft_printf("Error\n");
+		ft_putendl_fd("Error", 2);
 		return (0);
 	}
 	while (argv[i])

@@ -6,11 +6,12 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:01:24 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 21:08:06 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/21 11:11:39 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
 #include "ft_printf.h"
 
 int	has_invalid_char(char *nptr)
@@ -98,7 +99,8 @@ t_atoi_check	atol_overflow(char *nptr)
 	check = no_sign_after_number(&i, nptr, check);
 	if (check.error)
 	{
-		ft_printf("Error\n");
+
+		ft_putendl_fd("Error", 2);
 		return (check);
 	}
 	check.nb = (int)l_nb;
