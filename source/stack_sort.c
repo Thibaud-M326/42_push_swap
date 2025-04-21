@@ -6,12 +6,11 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 19:24:58 by vscode            #+#    #+#             */
-/*   Updated: 2025/04/20 23:34:20 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/21 00:06:58 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 
 int	stack_sorted(t_stack_node **a)
 {
@@ -58,19 +57,17 @@ void	stack_sort_three(t_stack_node **a)
 	*a = i;
 }
 
-void	put_smallest_top(t_stack_node **a)
+int	find_smallest_top(t_stack_node **a)
 {
 	t_stack_node	*node;
 	int				smallest;
 	int				smallest_pos;
 	int				i;
-	int				len;
 
 	node = *a;
 	smallest = (*a)->value;
 	smallest_pos = 0;
 	i = 0;
-	len = get_stack_len(a);
 	while (node)
 	{
 		if (node->value < smallest)
@@ -81,17 +78,22 @@ void	put_smallest_top(t_stack_node **a)
 		i++;
 		node = node->next;
 	}
+	return (smallest_pos);
+}
+
+void	stack_sort_four(t_stack_node **a, t_stack_node **b)
+{
+	int	smallest_pos;
+	int	len;
+
+	smallest_pos = find_smallest_top(a);
+	len = get_stack_len(a);
 	if (smallest_pos < len / 2)
 		while (smallest_pos--)
 			rotate_a(a);
 	else
 		while (smallest_pos++ < len)
 			reverse_rotate_a(a);
-}
-
-void	stack_sort_four(t_stack_node **a, t_stack_node **b)
-{
-	put_smallest_top(a);
 	push_b(a, b);
 	stack_sort_three(a);
 	push_a(a, b);
@@ -99,7 +101,17 @@ void	stack_sort_four(t_stack_node **a, t_stack_node **b)
 
 void	stack_sort_five(t_stack_node **a, t_stack_node **b)
 {
-	put_smallest_top(a);
+	int	smallest_pos;
+	int	len;
+
+	smallest_pos = find_smallest_top(a);
+	len = get_stack_len(a);
+	if (smallest_pos < len / 2)
+		while (smallest_pos--)
+			rotate_a(a);
+	else
+		while (smallest_pos++ < len)
+			reverse_rotate_a(a);
 	push_b(a, b);
 	stack_sort_four(a, b);
 	push_a(a, b);

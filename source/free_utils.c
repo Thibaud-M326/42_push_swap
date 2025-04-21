@@ -6,12 +6,11 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 15:04:31 by vscode            #+#    #+#             */
-/*   Updated: 2025/04/20 20:36:48 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 23:52:47 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 
 void	free_stack(t_stack_node **a)
 {

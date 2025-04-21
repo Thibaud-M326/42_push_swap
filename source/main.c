@@ -6,12 +6,11 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:03:09 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 23:34:33 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/20 23:51:57 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 
 void	sort_by_stack_size(t_stack_node **a, t_stack_node **b)
 {

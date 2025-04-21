@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 20:50:39 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/21 00:11:08 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,7 @@ int	push_split_stack(t_stack_node **a, char **splited_argv)
 		if (check.error == 0)
 			check.error = is_duplicate_num_in_stack(a);
 		if (check.error == 1)
-		{
-			free_split(splited_argv);
-			free_stack(a);
 			return (0);
-		}
 		i++;
 	}
 	return (1);
@@ -131,6 +127,8 @@ int	stack_init(t_stack_node **a, char **argv)
 		splited_argv = ft_split(argv[i]);
 		if (!push_split_stack(a, splited_argv))
 		{
+			free_split(splited_argv);
+			free_stack(a);
 			return (0);
 		}
 		if (splited_argv)

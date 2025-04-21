@@ -110,7 +110,6 @@ success_expected "1" "2" "3"
 valgrind_check "1" "2" "3"
 error_expected 1 ++3 4
 
-echo -e "\n${YELLOW}=== ALL TESTS DONE ===${RESET}"
 echo -e "\n${YELLOW}=== TESTING LITTLE INPUTS INSTRUCTION COUNT ===${RESET}"
 
 check_instruction_count() {
@@ -136,3 +135,5 @@ check_instruction_count 12 -3 -3232 52 -6 2
 check_instruction_count 12 -3 -3232 522323 -6 2
 check_instruction_count 12 -3 -3232 522323 -6 -2
 check_instruction_count 12 3 -3232 522323 -6 -2
+
+echo -e "\n${YELLOW}=== ALL TESTS DONE ===${RESET}"
