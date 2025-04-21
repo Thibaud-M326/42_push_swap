@@ -6,7 +6,7 @@
 /*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:01:24 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/21 11:11:39 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/21 11:20:36 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ t_atoi_check	atol_overflow(char *nptr)
 	check = no_sign_after_number(&i, nptr, check);
 	if (check.error)
 	{
-
 		ft_putendl_fd("Error", 2);
 		return (check);
 	}
