@@ -1,5 +1,6 @@
 # Fichiers objets
 obj/*.o
+*.md
 
 # Exécutables
 push_swap

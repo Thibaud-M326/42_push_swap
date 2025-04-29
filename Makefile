@@ -6,7 +6,6 @@ LIBFTPRINTF = ./libft/42_ft_printf/libftprintf.a
 OBJ_DIR = ./obj
 SRC_DIR = ./source
 HEADER_DIR = ./header
-BIN_DIR = ./bin
 HEADER = $(HEADER_DIR)/push_swap.h
 
 # Directories
@@ -30,27 +29,22 @@ lib_printf:
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-# Create Binary Folder
-$(BIN_DIR):
-	mkdir -p $(BIN_DIR)
-
 # Compiler and Linker Rules
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ) $(LIBFT) $(LIBFTPRINTF) Makefile
-	mkdir -p $(BIN_DIR)
 	$(CC) $(OBJ) $(LIBFT) $(LIBFTPRINTF) -o $(NAME)
 
 # Clean Objects and Binaries
 clean:
 	rm -rf $(OBJ_DIR)
-	rm -rf $(BIN_DIR)
 	$(MAKE) clean -C ./libft/42_libft
 	$(MAKE) clean -C ./libft/42_ft_printf
 
 # Remove compiled files
 fclean: clean
+	rm -f push_swap
 	rm -rf $(LIBFT)
 	rm -rf $(LIBFTPRINTF)
 
