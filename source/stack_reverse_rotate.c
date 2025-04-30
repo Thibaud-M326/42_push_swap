@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_reverse_rotate.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niroched <niroched@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: thmaitre <thmaitre@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 14:05:19 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/30 11:29:46 by niroched         ###   ########lyon.fr   */
+/*   Created: 2025-04-30 10:26:17 by thmaitre          #+#    #+#             */
+/*   Updated: 2025-04-30 10:26:17 by thmaitre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h" /*attention header */
+#include "push_swap.h"
 
 void	reverse_rotate_a(t_stack_node **a)
 {
