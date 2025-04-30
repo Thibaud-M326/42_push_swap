@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niroched <niroched@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:35:12 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/21 11:11:24 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/30 11:06:06 by niroched         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ int	stack_init(t_stack_node **a, char **argv)
 	while (argv[i])
 	{
 		splited_argv = ft_split(argv[i]);
+		if (!splited_argv)
+			return (1);
 		if (!push_split_stack(a, splited_argv))
 		{
 			free_split(splited_argv);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niroched <niroched@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 21:41:46 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/21 00:07:55 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/30 11:18:45 by niroched         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	swap_b(t_stack_node **b)
 	write(1, "sb\n", 3);
 }
 
-void	swap_swap(t_stack_node **a, t_stack_node **b)
+void	swap_swap(t_stack_node **a, t_stack_node **b) /* a voir*/
 {
 	swap_a(a);
 	swap_b(b);
