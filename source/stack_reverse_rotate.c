@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_reverse_rotate.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niroched <niroched@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:05:19 by thibaud           #+#    #+#             */
-/*   Updated: 2025/04/20 14:05:04 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/30 11:29:46 by niroched         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap.h" /*attention header */
 
 void	reverse_rotate_a(t_stack_node **a)
 {

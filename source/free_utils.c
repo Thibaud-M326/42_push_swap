@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: niroched <niroched@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 15:04:31 by vscode            #+#    #+#             */
-/*   Updated: 2025/04/29 14:40:19 by thibaud          ###   ########.fr       */
+/*   Updated: 2025/04/30 11:24:57 by niroched         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	free_split(char **split)
 	int	i;
 
 	i = 0;
+	if (!split)
+		return ;
 	while (split[i])
 	{
 		free(split[i++]);

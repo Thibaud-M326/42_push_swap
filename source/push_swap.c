@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niroched <niroched@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 18:20:13 by vscode            #+#    #+#             */
-/*   Updated: 2025/04/20 15:45:17 by vscode           ###   ########.fr       */
+/*   Updated: 2025/04/30 11:28:52 by niroched         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap.h" /* attention au header*/
 
 int	get_max_bits(t_stack_node **a)
 {
