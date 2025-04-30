@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-void	stack_array(t_stack_node **a, int **int_array, int *stack_len)
+int	stack_array(t_stack_node **a, int **int_array, int *stack_len)
 {
 	t_stack_node	*node;
 	int				i;
 
 	if (!a || !*a || !(*a)->next)
-		return ;
+		return (0);
 	*stack_len = get_stack_len(a);
 	*int_array = malloc(sizeof(int) * (*stack_len));
 	if (!*int_array)
-		return ;
+		return (0);
 	node = *a;
 	i = 0;
 	while (node)
@@ -31,6 +31,7 @@ void	stack_array(t_stack_node **a, int **int_array, int *stack_len)
 		node = node->next;
 		i++;
 	}
+	return (1);
 }
 
 void	sort_int_tab(int *tab, int len)
@@ -78,11 +79,13 @@ void	symplify(t_stack_node **a, int *int_array, int stack_len)
 	}
 }
 
-void	symplify_stack(t_stack_node **a, int **int_array)
+int	symplify_stack(t_stack_node **a, int **int_array)
 {
 	int	stack_len;
 
-	stack_array(a, int_array, &stack_len);
+	if(!stack_array(a, int_array, &stack_len))
+		return (0);
 	sort_int_tab(*int_array, stack_len);
 	symplify(a, *int_array, stack_len);
+	return (1);
 }

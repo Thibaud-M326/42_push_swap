@@ -50,15 +50,17 @@ void	radix(t_stack_node **a, t_stack_node **b)
 	}
 }
 
-void	push_swap(t_stack_node **a, t_stack_node **b)
+int	push_swap(t_stack_node **a, t_stack_node **b)
 {
 	int	*int_array;
 
 	if (!a || !*a || !b)
-		return ;
+		return (0);
 	int_array = NULL;
-	symplify_stack(a, &int_array);
+	if(!symplify_stack(a, &int_array))
+		return (0);
 	radix(a, b);
 	if (int_array)
 		free(int_array);
+	return (1);
 }

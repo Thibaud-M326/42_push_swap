@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	sort_by_stack_size(t_stack_node **a, t_stack_node **b)
+int	sort_by_stack_size(t_stack_node **a, t_stack_node **b)
 {
 	int				stack_len;
 
@@ -26,7 +26,9 @@ void	sort_by_stack_size(t_stack_node **a, t_stack_node **b)
 	if (stack_len == 5)
 		stack_sort_five(a, b);
 	if (stack_len > 5)
-		push_swap(a, b);
+		if(!push_swap(a, b))
+			return (0);
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -41,7 +43,8 @@ int	main(int argc, char **argv)
 	if (!stack_init(&a, &argv[1]))
 		return (1);
 	if (!stack_sorted(&a))
-		sort_by_stack_size(&a, &b);
+		if(!sort_by_stack_size(&a, &b))
+			return (1);
 	if (a)
 		free_stack(&a);
 	return (0);

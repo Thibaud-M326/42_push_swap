@@ -32,7 +32,7 @@ typedef struct s_stack_node
 }	t_stack_node;
 
 // push_swap.c
-void			push_swap(t_stack_node **a, t_stack_node **b);
+int				push_swap(t_stack_node **a, t_stack_node **b);
 
 // atol_overflow.c
 t_atoi_check	atol_overflow(char *nptr);
@@ -82,8 +82,8 @@ void			free_stack(t_stack_node **a);
 void			free_split(char **split);
 
 // symplify_stack.c
-void			stack_array(t_stack_node **a, int **int_array, int *stack_len);
+int				stack_array(t_stack_node **a, int **int_array, int *stack_len);
 void			sort_int_tab(int *tab, int len);
 void			symplify(t_stack_node **a, int *int_array, int stack_len);
-void			symplify_stack(t_stack_node **a, int **int_array);
+int				symplify_stack(t_stack_node **a, int **int_array);
 #endif
