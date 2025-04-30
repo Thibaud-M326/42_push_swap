@@ -42,17 +42,17 @@ void	stack_sort_three(t_stack_node **a)
 	k = j->next;
 	if (i->value > j->value && j->value > k->value)
 	{
-		swap_a(&i);
-		reverse_rotate_a(&i);
+		swap_a(&i, 1);
+		reverse_rotate_a(&i, 1);
 	}
 	while (i->value > j->value || i->value > k->value)
-		rotate_a(&i);
+		rotate_a(&i, 1);
 	j = i->next;
 	k = j->next;
 	if (j->value > k->value)
 	{
-		swap_a(&i);
-		rotate_a(&i);
+		swap_a(&i, 1);
+		rotate_a(&i, 1);
 	}
 	*a = i;
 }
@@ -90,10 +90,10 @@ void	stack_sort_four(t_stack_node **a, t_stack_node **b)
 	len = get_stack_len(a);
 	if (smallest_pos < len / 2)
 		while (smallest_pos--)
-			rotate_a(a);
+			rotate_a(a, 1);
 	else
 		while (smallest_pos++ < len)
-			reverse_rotate_a(a);
+			reverse_rotate_a(a, 1);
 	push_b(a, b);
 	stack_sort_three(a);
 	push_a(a, b);
@@ -108,10 +108,10 @@ void	stack_sort_five(t_stack_node **a, t_stack_node **b)
 	len = get_stack_len(a);
 	if (smallest_pos < len / 2)
 		while (smallest_pos--)
-			rotate_a(a);
+			rotate_a(a, 1);
 	else
 		while (smallest_pos++ < len)
-			reverse_rotate_a(a);
+			reverse_rotate_a(a, 1);
 	push_b(a, b);
 	stack_sort_four(a, b);
 	push_a(a, b);

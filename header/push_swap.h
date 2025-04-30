@@ -48,18 +48,18 @@ void			stack_sort_four(t_stack_node **a, t_stack_node **b);
 void			stack_sort_five(t_stack_node **a, t_stack_node **b);
 
 // stack_swap.c
-void			swap_a(t_stack_node **a);
-void			swap_b(t_stack_node **b);
+void			swap_a(t_stack_node **a, int print);
+void			swap_b(t_stack_node **b, int print);
 void			swap_swap(t_stack_node **a, t_stack_node **b);
 
 // stack_rotate.c
-void			rotate_a(t_stack_node **a);
-void			rotate_b(t_stack_node **b);
+void			rotate_a(t_stack_node **a, int print);
+void			rotate_b(t_stack_node **b, int print);
 void			rotate_rotate(t_stack_node **a, t_stack_node **b);
 
 // stack_reverse_rotate.c
-void			reverse_rotate_a(t_stack_node **a);
-void			reverse_rotate_b(t_stack_node **a);
+void			reverse_rotate_a(t_stack_node **a, int print);
+void			reverse_rotate_b(t_stack_node **a, int print);
 void			reverse_rotate_rotate(t_stack_node **a, t_stack_node **b);
 
 //stack_push.c

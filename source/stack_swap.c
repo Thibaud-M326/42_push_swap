@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	swap_a(t_stack_node **a)
+void	swap_a(t_stack_node **a, int print)
 {
 	t_stack_node	*temp;
 	t_stack_node	*b;
@@ -24,10 +24,11 @@ void	swap_a(t_stack_node **a)
 	b->next = *a;
 	(*a)->next = temp;
 	*a = b;
-	write(1, "sa\n", 3);
+	if (print)
+		write(1, "sa\n", 3);
 }
 
-void	swap_b(t_stack_node **b)
+void	swap_b(t_stack_node **b, int print)
 {
 	t_stack_node	*temp;
 	t_stack_node	*a;
@@ -39,12 +40,13 @@ void	swap_b(t_stack_node **b)
 	a->next = *b;
 	(*b)->next = temp;
 	*b = a;
-	write(1, "sb\n", 3);
+	if (print)
+		write(1, "sb\n", 3);
 }
 
-void	swap_swap(t_stack_node **a, t_stack_node **b) /* a voir*/
+void	swap_swap(t_stack_node **a, t_stack_node **b)
 {
-	swap_a(a);
-	swap_b(b);
+	swap_a(a, 0);
+	swap_b(b, 0);
 	write(1, "ss\n", 3);
 }

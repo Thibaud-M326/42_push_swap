@@ -40,7 +40,7 @@ void	radix(t_stack_node **a, t_stack_node **b)
 		{
 			num = get_stack_top_value(a);
 			if (((num >> i) & 1) == 1)
-				rotate_a(a);
+				rotate_a(a, 1);
 			else
 				push_b(a, b);
 		}

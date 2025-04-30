@@ -18,7 +18,7 @@ void	sort_by_stack_size(t_stack_node **a, t_stack_node **b)
 
 	stack_len = get_stack_len(a);
 	if (stack_len == 2)
-		rotate_a(a);
+		rotate_a(a, 1);
 	if (stack_len == 3)
 		stack_sort_three(a);
 	if (stack_len == 4)
