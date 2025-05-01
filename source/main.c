@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmaitre <thmaitre@student.42.fr>          #+#  +:+       +#+        */
+/*   By: vscode <vscode@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-30 10:25:14 by thmaitre          #+#    #+#             */
-/*   Updated: 2025-04-30 10:25:14 by thmaitre         ###   ########.fr       */
+/*   Created: 2025/04/30 10:25:14 by thmaitre          #+#    #+#             */
+/*   Updated: 2025/05/01 21:04:01 by vscode           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!stack_sorted(&a))
 		if(!sort_by_stack_size(&a, &b))
+		{
+			if (a)
+				free_stack(&a);
 			return (1);
+		}
 	if (a)
 		free_stack(&a);
 	return (0);
