@@ -95,6 +95,8 @@ void	assign_split(char *str, char **split)
 	}
 }
 
+//protéger le malloc de assign split
+
 char	**ft_split(char *str)
 {
 	int		count_words;
