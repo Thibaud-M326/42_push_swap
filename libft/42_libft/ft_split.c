@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	*free_char_tab(char **split, int k)
+int	free_char_tab(char **split, int k)
 {
 	while (k >= 0)
 	{
@@ -20,7 +20,7 @@ void	*free_char_tab(char **split, int k)
 		k--;
 	}
 	free(split);
-	return (NULL);
+	return (0);
 }
 
 int	ft_count_words(char *str)
@@ -70,7 +70,7 @@ char	*ft_strndup(char *str, int n)
 	return (dup);
 }
 
-void	assign_split(char *str, char **split)
+int	assign_split(char *str, char **split)
 {
 	int	end;
 	int	beg;
@@ -89,13 +89,14 @@ void	assign_split(char *str, char **split)
 		if (end > beg)
 		{
 			split[word] = ft_strndup(&str[beg], end - beg);
+			if (!split[word])
+				return (free_char_tab(split, word));
 			word++;
 		}
 		beg = end;
 	}
+	return (1);
 }
-
-//protéger le malloc de assign split
 
 char	**ft_split(char *str)
 {
@@ -106,7 +107,8 @@ char	**ft_split(char *str)
 	split = malloc(sizeof(char *) * (count_words + 1));
 	if (!split)
 		return (NULL);
-	assign_split(str, split);
+	if (!assign_split(str, split))
+		return (NULL);
 	split[count_words] = NULL;
 	return (split);
 }

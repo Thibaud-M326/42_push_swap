@@ -41,6 +41,12 @@ t_atoi_check	atol_overflow(char *nptr);
 int				push_back_stack(t_stack_node **a, int value);
 int				stack_init(t_stack_node **a, char **argv);
 
+// stack_init_support.c
+int				push_back_stack(t_stack_node **a, int value);
+int				is_duplicate_num_in_stack(t_stack_node **a);
+int				push_split_stack(t_stack_node **a, char **splited_argv);
+int				is_empty_argv(char **argv);
+
 // stack_sort.c
 int				stack_sorted(t_stack_node **a);
 void			stack_sort_three(t_stack_node **a);

@@ -6,8 +6,26 @@ OBJ_DIR = ./obj
 SRC_DIR = ./source
 HEADER_DIR = ./header
 HEADER = $(HEADER_DIR)/push_swap.h
+LIBFTPRINTF_HEADER = $(HEADER_DIR)/ft_printf.h
+LIBFT_HEADER = $(HEADER_DIR)/libft.h
+HDRS = $(HEADER) $(LIBFTPRINTF_HEADER) $(LIBFT_HEADER)
 
-SRC = $(shell find $(SRC_DIR) -name '*.c')
+SRC =									\
+	$(SRC_DIR)/atol_overflow.c			\
+	$(SRC_DIR)/free_utils.c				\
+	$(SRC_DIR)/main.c					\
+	$(SRC_DIR)/push_swap.c				\
+	$(SRC_DIR)/stack_init_support.c		\
+	$(SRC_DIR)/stack_init.c				\
+	$(SRC_DIR)/stack_print.c			\
+	$(SRC_DIR)/stack_push.c				\
+	$(SRC_DIR)/stack_reverse_rotate.c	\
+	$(SRC_DIR)/stack_rotate.c			\
+	$(SRC_DIR)/stack_sort.c				\
+	$(SRC_DIR)/stack_swap.c				\
+	$(SRC_DIR)/stack_utils.c			\
+	$(SRC_DIR)/symplify_stack.c
+
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 NAME = push_swap
@@ -24,10 +42,10 @@ lib_printf:
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER) | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HDRS) Makefile | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJ) $(LIBFT) $(LIBFTPRINTF) Makefile
+$(NAME): $(OBJ) $(LIBFT) $(LIBFTPRINTF)
 	$(CC) $(OBJ) $(LIBFT) $(LIBFTPRINTF) -o $(NAME)
 
 clean:
