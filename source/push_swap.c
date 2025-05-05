@@ -57,7 +57,7 @@ int	push_swap(t_stack_node **a, t_stack_node **b)
 	if (!a || !*a || !b)
 		return (0);
 	int_array = NULL;
-	if(!symplify_stack(a, &int_array))
+	if (!symplify_stack(a, &int_array))
 		return (0);
 	radix(a, b);
 	if (int_array)

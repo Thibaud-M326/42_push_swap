@@ -83,7 +83,7 @@ int	symplify_stack(t_stack_node **a, int **int_array)
 {
 	int	stack_len;
 
-	if(!stack_array(a, int_array, &stack_len))
+	if (!stack_array(a, int_array, &stack_len))
 		return (0);
 	sort_int_tab(*int_array, stack_len);
 	symplify(a, *int_array, stack_len);
