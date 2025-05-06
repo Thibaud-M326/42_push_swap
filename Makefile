@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I./header -I./libft/42_libft -I./libft/42_ft_printf
+CFLAGS = -Wall -Wextra -Werror -MMD -MP -I./header -I./libft/42_libft -I./libft/42_ft_printf
 LIBFT = ./libft/42_libft/libft.a
 LIBFTPRINTF = ./libft/42_ft_printf/libftprintf.a
 OBJ_DIR = ./obj
@@ -26,6 +26,7 @@ SRC =									\
 	$(SRC_DIR)/symplify_stack.c
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+DEP = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.d)
 
 NAME = push_swap
 CHECKER = checker_Mac
@@ -38,14 +39,14 @@ lib:
 lib_printf:
 	$(MAKE) -C ./libft/42_ft_printf
 
-$(OBJ_DIR):
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HDRS) Makefile | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ) $(LIBFT) $(LIBFTPRINTF)
 	$(CC) $(OBJ) $(LIBFT) $(LIBFTPRINTF) -o $(NAME)
+
+-include $(DEP)
 
 clean:
 	rm -rf $(OBJ_DIR)
