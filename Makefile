@@ -17,7 +17,6 @@ SRC =									\
 	$(SRC_DIR)/push_swap.c				\
 	$(SRC_DIR)/stack_init_support.c		\
 	$(SRC_DIR)/stack_init.c				\
-	$(SRC_DIR)/stack_print.c			\
 	$(SRC_DIR)/stack_push.c				\
 	$(SRC_DIR)/stack_reverse_rotate.c	\
 	$(SRC_DIR)/stack_rotate.c			\

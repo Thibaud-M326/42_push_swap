@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 #include "libft.h"
-#include "ft_printf.h"
 
 int	has_invalid_char(char *nptr)
 {
