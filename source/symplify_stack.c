@@ -72,7 +72,10 @@ void	symplify(t_stack_node **a, int *int_array, int stack_len)
 		while (i < stack_len)
 		{
 			if (node->value == int_array[i])
+			{
 				node->value = i;
+				break;
+			}
 			i++;
 		}
 		node = node->next;
