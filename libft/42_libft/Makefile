@@ -57,11 +57,7 @@ SRCS_BONUS	:=	\
 	ft_lstiter_bonus.c 			\
 	ft_lstmap_bonus.c
 
-# BUILD_DIR	:= .build
-# OBJS		:= $(SRCS:%.c=$(BUILD_DIR)/%.o)
 OBJS		:= $(SRCS:%.c=%.o)
-
-# OBJS_BONUS	:= $(SRCS_BONUS:%.c=$(BUILD_DIR)/%.o)
 OBJS_BONUS	:= $(SRCS_BONUS:%.c=%.o)
 
 CC			:= cc
@@ -74,7 +70,6 @@ ARFLAGS 	:= -r -c -s
 #------------------------------------------------#
 
 RM              := rm -f
-# RM_DIR          := rm -rf
 MAKEFLAGS       += --no-print-directory
 TOUCH			:= && touch bonus
 BONUS			:= bonus
@@ -87,11 +82,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-	$(info CREATED $(NAME))
 
 %.o: %.c $(HDRS)/libft.h $(MAKEFILE)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -I$(HDRS) -c -o $@ $<
-	$(info CREATED $@ WITH $<)
 
 bonus: $(OBJS) $(OBJS_BONUS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(OBJS_BONUS) $(TOUCH)
@@ -110,4 +103,4 @@ re:
 #   SPEC                                         #
 #------------------------------------------------#
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

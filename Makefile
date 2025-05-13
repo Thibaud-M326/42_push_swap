@@ -1,7 +1,9 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -MMD -MP -I./header -I./libft/42_libft -I./libft/42_ft_printf
-LIBFT = ./libft/42_libft/libft.a
-LIBFTPRINTF = ./libft/42_ft_printf/libftprintf.a
+LIBFT = ./libft/42_libft
+LIBFTPRINTF = ./libft/42_ft_printf
+LIBFT_A = ./libft/42_libft/libft.a
+LIBFTPRINTF_A = ./libft/42_ft_printf/libftprintf.a
 OBJ_DIR = ./obj
 SRC_DIR = ./source
 HEADER_DIR = ./header
@@ -29,22 +31,21 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 DEP = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.d)
 
 NAME = push_swap
-CHECKER = checker_Mac
 
 all: lib lib_printf $(NAME)
 
 lib:
-	$(MAKE) -C ./libft/42_libft
+	$(MAKE) -C $(LIBFT)
 
 lib_printf:
-	$(MAKE) -C ./libft/42_ft_printf
+	$(MAKE) -C $(LIBFTPRINTF)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile
 	mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJ) $(LIBFT) $(LIBFTPRINTF)
-	$(CC) $(OBJ) $(LIBFT) $(LIBFTPRINTF) -o $(NAME)
+$(NAME): $(OBJ) $(LIBFT_A) $(LIBFTPRINTF_A)
+	$(CC) $(OBJ) $(LIBFT_A) $(LIBFTPRINTF_A) -o $(NAME)
 
 -include $(DEP)
 
@@ -55,8 +56,8 @@ clean:
 
 fclean: clean
 	rm -f push_swap
-	rm -rf $(LIBFT)
-	rm -rf $(LIBFTPRINTF)
+	rm -rf $(LIBFT_A)
+	rm -rf $(LIBFTPRINTF_A)
 
 re: fclean all
 
